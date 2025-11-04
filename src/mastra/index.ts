@@ -16,7 +16,7 @@ export const mastra = new Mastra({
       endpoint: "http://localhost:3000/api/traces",
       headers: {
         "Content-Type": "application/json",
-        "X-API-Key": process.env.SENTYNEL_API_KEY || "",
+        "API-Key": process.env.SENTYNEL_API_KEY || "",
       },
     },
   },
