@@ -5,6 +5,10 @@ import { publisherAgent } from "./agents/example-publisher-agent";
 import { copywriterAgent } from "./agents/example-copywriter-agent";
 import { editorAgent } from "./agents/example-editor-agent";
 
+if (!process.env.SENTYNEL_API_KEY) {
+  throw new Error("SENTYNEL_API_KEY is not set");
+}
+
 export const mastra = new Mastra({
   observability: {
     configs: {
@@ -18,7 +22,7 @@ export const mastra = new Mastra({
                 protocol: "http/json",
                 headers: {
                   "Content-Type": "application/json",
-                  "X-API-Key": "default-api-key",
+                  "API-Key": process.env.SENTYNEL_API_KEY,
                 },
               },
             },
