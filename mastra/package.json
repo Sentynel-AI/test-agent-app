@@ -2,7 +2,11 @@
   "name": "@mastra-demo/mastra",
   "version": "1.0.0",
   "private": true,
-  "main": "index.js",
+  "main": "./src/mastra/index.ts",
+  "types": "./src/mastra/index.ts",
+  "exports": {
+    ".": "./src/mastra/index.ts"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "mastra dev",
@@ -20,6 +24,7 @@
     "node": ">=20.9.0"
   },
   "dependencies": {
+    "@mastra/ai-sdk": "^0.2.5",
     "@mastra/core": "^0.22.2",
     "@mastra/evals": "^0.14.1",
     "@mastra/libsql": "^0.16.0",

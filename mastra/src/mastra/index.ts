@@ -4,6 +4,7 @@ import { OtelExporter } from "@mastra/otel-exporter";
 import { publisherAgent } from "./agents/example-publisher-agent";
 import { copywriterAgent } from "./agents/example-copywriter-agent";
 import { editorAgent } from "./agents/example-editor-agent";
+import { chatRoute } from "@mastra/ai-sdk";
 
 if (!process.env.SENTYNEL_API_KEY) {
   throw new Error("SENTYNEL_API_KEY is not set");
@@ -32,4 +33,12 @@ export const mastra = new Mastra({
     },
   },
   agents: { copywriterAgent, editorAgent, publisherAgent },
+  server: {
+    apiRoutes: [
+      chatRoute({
+        path: "/chat",
+        agent: "publisherAgent",
+      }),
+    ],
+  },
 });
