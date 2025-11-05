@@ -23,7 +23,7 @@ import {
 export const Assistant = () => {
   const runtime = useChatRuntime({
     transport: new AssistantChatTransport({
-      api: "http://localhost:4111/chat",
+      api: process.env.NEXT_PUBLIC_MASTRA_URL,
     }),
   });
 
