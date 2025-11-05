@@ -32,4 +32,28 @@ export const mastra = new Mastra({
     },
   },
   agents: { copywriterAgent, editorAgent, publisherAgent },
+  server: {
+    cors: {
+      origin: ["http://localhost:3000", "http://localhost:3001"],
+      credentials: true,
+    },
+    middleware: [
+      {
+        path: "/api/agents/*/stream",
+        handler: async (c, next) => {
+          const body = await c.req.json();
+
+          // Handle compatibility with assistant-ui
+          if ("state" in body && body.state == null) {
+            delete body.state;
+            delete body.tools;
+          }
+
+          c.req.json = async () => body;
+
+          return next();
+        },
+      },
+    ],
+  },
 });

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "mastra"
+    "mastra",
+    "next"
   ],
   "scripts": {
     "dev": "bun run --filter mastra dev",
@@ -15,6 +16,10 @@
     "typecheck": "bun run --filter '*' typecheck",
     "typecheck:mastra": "bun run --filter mastra typecheck",
     "typecheck:next": "bun run --filter next typecheck",
+    "lint": "bun run --filter next lint",
+    "lint:next": "bun run --filter next lint",
+    "prettier": "bun run --filter next prettier",
+    "prettier:fix": "bun run --filter next prettier:fix",
     "clean": "bun run --filter '*' clean",
     "install:all": "bun install"
   },

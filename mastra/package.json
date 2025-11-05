@@ -2,7 +2,11 @@
   "name": "@mastra-demo/mastra",
   "version": "1.0.0",
   "private": true,
-  "main": "index.js",
+  "main": "./src/mastra/index.ts",
+  "types": "./src/mastra/index.ts",
+  "exports": {
+    ".": "./src/mastra/index.ts"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "mastra dev",
