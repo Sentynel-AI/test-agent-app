@@ -8,6 +8,8 @@ import {
   PencilIcon,
   RefreshCwIcon,
   Square,
+  Bot,
+  User,
 } from "lucide-react";
 
 import {
@@ -24,6 +26,7 @@ import { LazyMotion, MotionConfig, domAnimation } from "motion/react";
 import * as m from "motion/react-m";
 
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { MarkdownText } from "@/components/assistant-ui/markdown-text";
 import { ToolFallback } from "@/components/assistant-ui/tool-fallback";
 import { TooltipIconButton } from "@/components/assistant-ui/tooltip-icon-button";
@@ -86,26 +89,102 @@ const ThreadScrollToBottom: FC = () => {
 const ThreadWelcome: FC = () => {
   return (
     <div className="aui-thread-welcome-root mx-auto my-auto flex w-full max-w-(--thread-max-width) grow flex-col">
-      <div className="aui-thread-welcome-center flex w-full grow flex-col items-center justify-center">
-        <div className="aui-thread-welcome-message flex size-full flex-col justify-center px-8">
-          <m.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            className="aui-thread-welcome-message-motion-1 text-2xl font-semibold"
-          >
-            Hello there!
-          </m.div>
-          <m.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ delay: 0.1 }}
-            className="aui-thread-welcome-message-motion-2 text-2xl text-muted-foreground/65"
-          >
-            Tell me a topic, and I&apos;ll generate a blog post about it.
-          </m.div>
-        </div>
+      <div className="aui-thread-welcome-center flex w-full grow flex-col items-center justify-center px-8 pb-8">
+        <m.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ delay: 0.1 }}
+          className="aui-thread-welcome-message-motion-1 mb-2 text-center text-3xl font-bold tracking-tight"
+        >
+          Welcome to Publisher Agent
+        </m.div>
+        <m.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ delay: 0.15 }}
+          className="aui-thread-welcome-message-motion-2 mb-8 max-w-lg text-center text-base text-muted-foreground"
+        >
+          Your AI-powered content creation assistant. I can help you write, edit,
+          and publish high-quality blog posts and articles.
+        </m.div>
+
+        <m.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ delay: 0.2 }}
+          className="mb-12 grid w-full max-w-2xl grid-cols-1 gap-4 @md:grid-cols-3"
+        >
+          <div className="flex flex-col items-center gap-2 rounded-lg border bg-card p-4 text-center shadow-sm">
+            <div className="flex size-10 items-center justify-center rounded-full bg-blue-500/10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="size-5 text-blue-600 dark:text-blue-400"
+              >
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" x2="8" y1="13" y2="13" />
+                <line x1="16" x2="8" y1="17" y2="17" />
+                <line x1="10" x2="8" y1="9" y2="9" />
+              </svg>
+            </div>
+            <h3 className="font-semibold">Content Creation</h3>
+            <p className="text-xs text-muted-foreground">
+              Generate high-quality articles and blog posts
+            </p>
+          </div>
+          <div className="flex flex-col items-center gap-2 rounded-lg border bg-card p-4 text-center shadow-sm">
+            <div className="flex size-10 items-center justify-center rounded-full bg-purple-500/10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="size-5 text-purple-600 dark:text-purple-400"
+              >
+                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+                <path d="m15 5 4 4" />
+              </svg>
+            </div>
+            <h3 className="font-semibold">Smart Editing</h3>
+            <p className="text-xs text-muted-foreground">
+              Refine and polish your writing instantly
+            </p>
+          </div>
+          <div className="flex flex-col items-center gap-2 rounded-lg border bg-card p-4 text-center shadow-sm">
+            <div className="flex size-10 items-center justify-center rounded-full bg-green-500/10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="size-5 text-green-600 dark:text-green-400"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" x2="12" y1="3" y2="15" />
+              </svg>
+            </div>
+            <h3 className="font-semibold">Quick Publishing</h3>
+            <p className="text-xs text-muted-foreground">
+              Ready to publish content in seconds
+            </p>
+          </div>
+        </m.div>
       </div>
       <ThreadSuggestions />
     </div>
@@ -114,34 +193,38 @@ const ThreadWelcome: FC = () => {
 
 const ThreadSuggestions: FC = () => {
   return (
-    <div className="aui-thread-welcome-suggestions grid w-full gap-2 pb-4 @md:grid-cols-2">
+    <div className="aui-thread-welcome-suggestions grid w-full gap-3 px-4 pb-4 @md:grid-cols-2">
       {[
         {
-          title: "The Future of AI",
-          label: "in modern technology",
-          action: "Write an article about the future of AI in modern technology",
+          title: "Write a blog post",
+          label: "about emerging tech trends",
+          action: "Write a comprehensive blog post about emerging technology trends in 2025",
+          icon: "✨",
         },
         {
-          title: "Sustainable Living",
-          label: "practices for beginners",
-          action: "Write an article about sustainable living practices for beginners",
+          title: "Create product content",
+          label: "for SaaS launch",
+          action: "Help me create content for a new SaaS product launch",
+          icon: "🚀",
         },
         {
-          title: "Remote Work Culture",
-          label: "and productivity tips",
-          action: "Write an article about remote work culture and productivity tips",
+          title: "Draft a case study",
+          label: "showcasing customer success",
+          action: "Draft a case study highlighting customer success and ROI improvements",
+          icon: "📊",
         },
         {
-          title: "Climate Change Solutions",
-          label: "individuals can implement",
-          action: "Write an article about climate change solutions individuals can implement",
+          title: "Write thought leadership",
+          label: "article for LinkedIn",
+          action: "Create a thought leadership article about AI adoption in enterprise",
+          icon: "💡",
         },
       ].map((suggestedAction, index) => (
         <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          transition={{ delay: 0.05 * index }}
+          transition={{ delay: 0.25 + 0.05 * index }}
           key={`suggested-action-${suggestedAction.title}-${index}`}
           className="aui-thread-welcome-suggestion-display nth-[n+3]:hidden @md:nth-[n+3]:block"
         >
@@ -152,13 +235,16 @@ const ThreadSuggestions: FC = () => {
           >
             <Button
               variant="ghost"
-              className="aui-thread-welcome-suggestion h-auto w-full flex-1 flex-wrap items-start justify-start gap-1 rounded-3xl border px-5 py-4 text-left text-sm @md:flex-col dark:hover:bg-accent/60"
+              className="aui-thread-welcome-suggestion group h-auto w-full flex-1 flex-wrap items-start justify-start gap-2 rounded-2xl border border-border/50 bg-card/50 px-5 py-4 text-left text-sm shadow-sm transition-all hover:border-primary/20 hover:bg-card hover:shadow-md @md:flex-col"
               aria-label={suggestedAction.action}
             >
-              <span className="aui-thread-welcome-suggestion-text-1 font-medium">
-                {suggestedAction.title}
-              </span>
-              <span className="aui-thread-welcome-suggestion-text-2 text-muted-foreground">
+              <div className="flex w-full items-center gap-2.5">
+                <span className="text-xl">{suggestedAction.icon}</span>
+                <span className="aui-thread-welcome-suggestion-text-1 font-semibold text-foreground group-hover:text-primary">
+                  {suggestedAction.title}
+                </span>
+              </div>
+              <span className="aui-thread-welcome-suggestion-text-2 text-xs text-muted-foreground">
                 {suggestedAction.label}
               </span>
             </Button>
@@ -171,19 +257,22 @@ const ThreadSuggestions: FC = () => {
 
 const Composer: FC = () => {
   return (
-    <div className="aui-composer-wrapper sticky bottom-0 mx-auto flex w-full max-w-(--thread-max-width) flex-col gap-4 overflow-visible rounded-t-3xl bg-background pb-4 md:pb-6">
+    <div className="aui-composer-wrapper sticky bottom-0 mx-auto flex w-full max-w-(--thread-max-width) flex-col gap-4 overflow-visible rounded-t-3xl bg-linear-to-t from-background via-background to-transparent pb-4 pt-8 md:pb-6">
       <ThreadScrollToBottom />
-      <ComposerPrimitive.Root className="aui-composer-root relative flex w-full flex-col rounded-3xl border border-border bg-muted px-1 pt-2 shadow-[0_9px_9px_0px_rgba(0,0,0,0.01),0_2px_5px_0px_rgba(0,0,0,0.06)] dark:border-muted-foreground/15">
+      <ComposerPrimitive.Root className="aui-composer-root relative flex w-full flex-col rounded-2xl border-2 border-border bg-card px-1 pt-2 shadow-lg shadow-black/5 transition-shadow hover:shadow-xl focus-within:border-primary/50 focus-within:shadow-xl dark:border-muted-foreground/20">
         <ComposerAttachments />
         <ComposerPrimitive.Input
-          placeholder="Send a message..."
-          className="aui-composer-input mb-1 max-h-32 min-h-16 w-full resize-none bg-transparent px-3.5 pt-1.5 pb-3 text-base outline-none placeholder:text-muted-foreground focus:outline-primary"
+          placeholder="Type your message to Publisher Agent..."
+          className="aui-composer-input mb-1 max-h-32 min-h-16 w-full resize-none bg-transparent px-4 pt-1.5 pb-3 text-base outline-none placeholder:text-muted-foreground/60 focus:outline-primary"
           rows={1}
           autoFocus
           aria-label="Message input"
         />
         <ComposerAction />
       </ComposerPrimitive.Root>
+      <p className="mx-auto text-center text-xs text-muted-foreground/60">
+        Publisher Agent can make mistakes. Consider checking important information.
+      </p>
     </div>
   );
 };
@@ -238,22 +327,35 @@ const AssistantMessage: FC = () => {
   return (
     <MessagePrimitive.Root asChild>
       <div
-        className="aui-assistant-message-root relative mx-auto w-full max-w-(--thread-max-width) animate-in py-4 duration-150 ease-out fade-in slide-in-from-bottom-1 last:mb-24"
+        className="aui-assistant-message-root relative mx-auto flex w-full max-w-(--thread-max-width) animate-in gap-4 py-6 duration-150 ease-out fade-in slide-in-from-bottom-1 last:mb-24"
         data-role="assistant"
       >
-        <div className="aui-assistant-message-content mx-2 leading-7 wrap-break-word text-foreground">
-          <MessagePrimitive.Parts
-            components={{
-              Text: MarkdownText,
-              tools: { Fallback: ToolFallback },
-            }}
-          />
-          <MessageError />
-        </div>
+        <Avatar className="size-9 shrink-0 border-2 border-primary/20 shadow-sm">
+          <AvatarFallback className="bg-linear-to-br from-primary/20 to-primary/10">
+            <Bot className="size-5 text-primary" />
+          </AvatarFallback>
+        </Avatar>
+        
+        <div className="flex min-w-0 flex-1 flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-semibold text-foreground">Publisher Agent</span>
+            <span className="text-xs text-muted-foreground">AI Assistant</span>
+          </div>
+          
+          <div className="aui-assistant-message-content rounded-2xl border bg-card/50 px-4 py-3 leading-7 shadow-sm wrap-break-word text-foreground">
+            <MessagePrimitive.Parts
+              components={{
+                Text: MarkdownText,
+                tools: { Fallback: ToolFallback },
+              }}
+            />
+            <MessageError />
+          </div>
 
-        <div className="aui-assistant-message-footer mt-2 ml-2 flex">
-          <BranchPicker />
-          <AssistantActionBar />
+          <div className="aui-assistant-message-footer flex">
+            <BranchPicker />
+            <AssistantActionBar />
+          </div>
         </div>
       </div>
     </MessagePrimitive.Root>
@@ -291,21 +393,36 @@ const UserMessage: FC = () => {
   return (
     <MessagePrimitive.Root asChild>
       <div
-        className="aui-user-message-root mx-auto grid w-full max-w-(--thread-max-width) animate-in auto-rows-auto grid-cols-[minmax(72px,1fr)_auto] gap-y-2 px-2 py-4 duration-150 ease-out fade-in slide-in-from-bottom-1 first:mt-3 last:mb-5 [&:where(>*)]:col-start-2"
+        className="aui-user-message-root mx-auto flex w-full max-w-(--thread-max-width) animate-in gap-4 py-6 duration-150 ease-out fade-in slide-in-from-bottom-1 first:mt-3 last:mb-5"
         data-role="user"
       >
-        <UserMessageAttachments />
+        <Avatar className="size-9 shrink-0 border-2 border-muted-foreground/20 shadow-sm">
+          <AvatarFallback className="bg-linear-to-br from-muted to-muted/50">
+            <User className="size-5 text-foreground/70" />
+          </AvatarFallback>
+        </Avatar>
 
-        <div className="aui-user-message-content-wrapper relative col-start-2 min-w-0">
-          <div className="aui-user-message-content rounded-3xl bg-muted px-5 py-2.5 wrap-break-word text-foreground">
-            <MessagePrimitive.Parts />
+        <div className="flex min-w-0 flex-1 flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-semibold text-foreground">You</span>
           </div>
-          <div className="aui-user-action-bar-wrapper absolute top-1/2 left-0 -translate-x-full -translate-y-1/2 pr-2">
-            <UserActionBar />
+          
+          <div className="relative">
+            <UserMessageAttachments />
+            
+            <div className="aui-user-message-content-wrapper">
+              <div className="aui-user-message-content rounded-2xl border bg-primary/5 px-4 py-3 wrap-break-word text-foreground">
+                <MessagePrimitive.Parts />
+              </div>
+            </div>
+            
+            <div className="aui-user-action-bar-wrapper mt-1">
+              <UserActionBar />
+            </div>
           </div>
+
+          <BranchPicker className="aui-user-branch-picker -mr-1" />
         </div>
-
-        <BranchPicker className="aui-user-branch-picker col-span-full col-start-1 row-start-3 -mr-1 justify-end" />
       </div>
     </MessagePrimitive.Root>
   );
@@ -316,10 +433,10 @@ const UserActionBar: FC = () => {
     <ActionBarPrimitive.Root
       hideWhenRunning
       autohide="not-last"
-      className="aui-user-action-bar-root flex flex-col items-end"
+      className="aui-user-action-bar-root flex items-center gap-1"
     >
       <ActionBarPrimitive.Edit asChild>
-        <TooltipIconButton tooltip="Edit" className="aui-user-action-edit p-4">
+        <TooltipIconButton tooltip="Edit" className="aui-user-action-edit">
           <PencilIcon />
         </TooltipIconButton>
       </ActionBarPrimitive.Edit>

@@ -1,49 +1,69 @@
 import * as React from "react";
-import { MessagesSquare } from "lucide-react";
-import Link from "next/link";
+import { Bot, Sparkles, Plus } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
   SidebarRail,
+  SidebarFooter,
 } from "@/components/ui/sidebar";
 import { ThreadList } from "@/components/assistant-ui/thread-list";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export function ThreadListSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
-      <SidebarHeader className="aui-sidebar-header mb-2 border-b">
-        <div className="aui-sidebar-header-content flex items-center justify-between">
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton size="lg" asChild>
-                <Link
-                  href="https://sentynel.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="aui-sidebar-header-icon-wrapper flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                    <MessagesSquare className="aui-sidebar-header-icon size-4" />
-                  </div>
-                  <div className="aui-sidebar-header-heading mr-6 flex flex-col gap-0.5 leading-none">
-                    <span className="aui-sidebar-header-title font-semibold">
-                      Sentynel Demo Chat
-                    </span>
-                  </div>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
+      <SidebarHeader className="aui-sidebar-header space-y-4 border-b bg-linear-to-b from-sidebar to-sidebar/80 p-4">
+        <div className="flex items-center gap-3">
+          <Avatar className="size-10 shrink-0 border-2 border-primary/20 shadow-sm">
+            <AvatarFallback className="bg-linear-to-br from-primary/20 to-primary/10">
+              <Bot className="size-5 text-primary" />
+            </AvatarFallback>
+          </Avatar>
+          <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+            <div className="flex items-center gap-1.5">
+              <h2 className="truncate text-sm font-bold">Publisher Agent</h2>
+              <Sparkles className="size-3 shrink-0 text-primary" />
+            </div>
+            <p className="truncate text-xs text-muted-foreground">
+              Content Assistant
+            </p>
+          </div>
         </div>
+        
+        <Button 
+          className="w-full justify-start gap-2 bg-primary/10 text-primary hover:bg-primary/20"
+          variant="ghost"
+        >
+          <Plus className="size-4" />
+          New Conversation
+        </Button>
       </SidebarHeader>
-      <SidebarContent className="aui-sidebar-content px-2">
+      
+      <SidebarContent className="aui-sidebar-content px-2 py-4">
+        <div className="mb-3 px-3">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            Recent Conversations
+          </h3>
+        </div>
         <ThreadList />
       </SidebarContent>
+      
+      <SidebarFooter className="border-t p-4">
+        <div className="flex items-center gap-2.5 rounded-lg bg-muted/50 p-3">
+          <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10">
+            <Sparkles className="size-4 text-primary" />
+          </div>
+          <div className="flex min-w-0 flex-1 flex-col">
+            <span className="text-xs font-medium">Enhanced Mode</span>
+            <span className="text-xs text-muted-foreground">Powered by AI</span>
+          </div>
+        </div>
+      </SidebarFooter>
+      
       <SidebarRail />
     </Sidebar>
   );
