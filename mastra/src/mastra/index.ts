@@ -6,8 +6,8 @@ import { copywriterAgent } from "./agents/example-copywriter-agent";
 import { editorAgent } from "./agents/example-editor-agent";
 import { chatRoute } from "@mastra/ai-sdk";
 
-if (!process.env.SENTYNEL_API_KEY || !process.env.SENTYNEL_OTEL_ENDPOINT) {
-  throw new Error("SENTYNEL_API_KEY or SENTYNEL_OTEL_ENDPOINT is not set");
+if (!process.env.SENTINEL_API_KEY || !process.env.SENTINEL_OTEL_ENDPOINT) {
+  throw new Error("SENTINEL_API_KEY or SENTINEL_OTEL_ENDPOINT is not set");
 }
 
 export const mastra = new Mastra({
@@ -19,11 +19,11 @@ export const mastra = new Mastra({
           new OtelExporter({
             provider: {
               custom: {
-                endpoint: process.env.SENTYNEL_OTEL_ENDPOINT,
+                endpoint: process.env.SENTINEL_OTEL_ENDPOINT,
                 protocol: "http/json",
                 headers: {
                   "Content-Type": "application/json",
-                  "API-Key": process.env.SENTYNEL_API_KEY,
+                  "API-Key": process.env.SENTINEL_API_KEY,
                 },
               },
             },
